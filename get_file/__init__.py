@@ -7,10 +7,14 @@ class get_file:
         self.__name_sheet = name_sheet
 
     def get_sheet(self, sheet_name=None) -> openpyxl.Workbook:
-        xls_file = Path(f'{self.__name_sheet}')
-        wb_obj: openpyxl.Workbook = openpyxl.load_workbook(xls_file)
-        if sheet_name is None:
-            sheet: openpyxl.Workbook = wb_obj.active
+        try:
+            xls_file = Path(f'{self.__name_sheet}')
+            wb_obj: openpyxl.Workbook = openpyxl.load_workbook(xls_file)
+        except Exception as e:
+            raise e
         else:
-            sheet: openpyxl.Workbook = wb_obj[sheet_name]
-        return sheet
+            if sheet_name is None:
+                sheet: openpyxl.Workbook = wb_obj.active
+            else:
+                sheet: openpyxl.Workbook = wb_obj[sheet_name]
+            return sheet
