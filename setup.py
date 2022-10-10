@@ -6,5 +6,5 @@ setup(
     description="Get data in excel and convert to Json",
     author="Luis Sulbaran",
     author_email="lucasulo2502@gmail.com",
-    packages=["get_file"]
+    packages=["get_file", "to_json"]
 )
